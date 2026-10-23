@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<ProjectName>PetCarrier</ProjectName>
+		<AssemblyName>$(ProjectName)</AssemblyName>
+		<RootNamespace>$(ProjectName)</RootNamespace>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<VersionMajor>0</VersionMajor>
+		<VersionMinor>4</VersionMinor>
+		<VersionPatch>0</VersionPatch>
+		<VersionSuffix></VersionSuffix>
+		<Authors>Vonny1412</Authors>
+		<Product>$(ProjectName)</Product>
+	</PropertyGroup>
+
+  <PropertyGroup>
+    <PluginFile>Plugin</PluginFile>
+    <PluginGUID>Vonny1412.PetCarrier</PluginGUID>
+    <PluginName>$(Product)</PluginName>
+    <PluginClass>Plugin</PluginClass>
+  </PropertyGroup>
+
+  <PropertyGroup>
+		<CopyToPluginsSubDirectory>PetCarrier</CopyToPluginsSubDirectory>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="Jotunn">
+			<HintPath>..\.References\Jotunn.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\**\*" />
+  </ItemGroup>
+
+
+  <Import Project="$(SolutionDir)\Valheim.Paths.props" />
+  <Import Project="$(SolutionDir)\Valheim.Libraries.props" />
+  <Import Project="$(SolutionDir)\Valheim.Mods.targets" />
+
+  <ItemGroup>
+    <None Remove=".publish.bat" />
+    <None Remove=".publish.ps1" />
+  </ItemGroup>
+
+
+</Project>
