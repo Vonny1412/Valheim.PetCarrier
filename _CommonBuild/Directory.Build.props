@@ -1,0 +1,33 @@
+<Project>
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+
+  <ItemGroup>
+      <None Remove=".gitignore" />
+      <None Remove=".commit.bat" />
+      <None Remove=".publish.bat" />
+      <None Remove=".publish.ps1" />
+  </ItemGroup>
+
+</Project>
