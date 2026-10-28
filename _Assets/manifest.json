@@ -1,0 +1,10 @@
+{
+  "name": "PetCarrier",
+  "version_number": "0.0.0",
+  "website_url": "https://github.com/Vonny1412/Valheim.PetCarrier",
+  "description": "Pack your tamed creatures into portable crates, carry them anywhere, and release them whenever you want.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2351",
+    "ValheimModding-Jotunn-2.30.2"
+  ]
+}
