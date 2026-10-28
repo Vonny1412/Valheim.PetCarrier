@@ -36,6 +36,10 @@ namespace PetCarrier
             }
         }
 
+        // Explicitly resolve the byte[] overload to avoid the ReadOnlySpan<byte>
+        // overload resolution issue when targeting .NET Framework 4.8.
+        private static readonly MethodInfo s_loadImageMethod = typeof(ImageConversion).GetMethod(nameof(ImageConversion.LoadImage), BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(Texture2D), typeof(byte[]), typeof(bool) }, null);
+
         private static Sprite CreateSprite(string png)
         {
             Assembly assembly = typeof(Plugin).Assembly;
@@ -54,7 +58,7 @@ namespace PetCarrier
             }
 
             Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
-            if (!texture.LoadImage(bytes))
+            if (s_loadImageMethod == null || !(bool)s_loadImageMethod.Invoke(null, new object[] { texture, bytes, false }))
             {
                 Object.Destroy(texture);
                 return null;

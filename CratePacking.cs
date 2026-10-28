@@ -29,8 +29,8 @@ namespace PetCarrier
         private const string RpcPackCommit = "PetCarrier_PackCommit";
         private const string RpcPackResult = "PetCarrier_PackResult";
         private const float PackTimeout = 10f;
-        private static readonly Dictionary<ZDOID, PackReservation> Reservations = new Dictionary<ZDOID, PackReservation>();
-        private static readonly Dictionary<string, PendingPack> PendingPacks = new Dictionary<string, PendingPack>();
+        private static readonly Dictionary<ZDOID, PackReservation> Reservations = new();
+        private static readonly Dictionary<string, PendingPack> PendingPacks = new();
 
         internal static void RegisterCreatureRPC(Character creature)
         {
@@ -385,31 +385,28 @@ namespace PetCarrier
         {
             float now = Time.realtimeSinceStartup;
 
-            List<string> expiredRequests = new List<string>();
+            List<string> expiredRequests = new();
 
             foreach (var entry in PendingPacks)
             {
-                if (!entry.Value.Committed && now - entry.Value.CreatedAt > PackTimeout)
+                if (now - entry.Value.CreatedAt > PackTimeout)
+                {
+                    if (entry.Value.Committed)
+                    {
+                        Plugin.Log.LogWarning(
+                            $"Committed pack request timed out without a result: {entry.Key}"
+                        );
+                    }
+
                     expiredRequests.Add(entry.Key);
+                }
             }
 
             foreach (string requestId in expiredRequests)
-                PendingPacks.Remove(requestId);
-
-            List<ZDOID> expiredReservations = new List<ZDOID>();
-
-            foreach (var entry in Reservations)
             {
-                if (now - entry.Value.CreatedAt > PackTimeout)
-                    expiredReservations.Add(entry.Key);
+                PendingPacks.Remove(requestId);
             }
 
-            foreach (ZDOID creatureId in expiredReservations)
-                Reservations.Remove(creatureId);
-
-            // TODO: Handle committed pack requests that never receive RpcPackResult.
-            //       Prevent stale PendingPacks entries from blocking future pack attempts.
-            //       Do not automatically refund the crate, as packing may have succeeded.
         }
 
     }

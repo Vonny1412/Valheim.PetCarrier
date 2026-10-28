@@ -70,18 +70,7 @@ namespace PetCarrier
             itemDropFilledShared.m_maxDurability = 1;
             itemDropFilledShared.m_useDurability = false;
             itemDropFilledShared.m_equipDuration = 0f;
-
-
-
-
         }
-
-
-
-
-
-
-
 
         private static ItemDrop CreateAndRegisterPrefab(string prefabName, Transform sourceVisual, bool equipable = false)
         {

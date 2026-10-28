@@ -64,7 +64,7 @@ namespace PetCarrier.Components
 
         private void CreateSide(int index, Vector3 position, float rotation)
         {
-            GameObject visual = new GameObject($"PetCarrier_Crate_Sprite_{index}");
+            GameObject visual = new($"PetCarrier_Crate_Sprite_{index}");
             visual.transform.SetParent(transform, false);
 
             visual.transform.localPosition = position;

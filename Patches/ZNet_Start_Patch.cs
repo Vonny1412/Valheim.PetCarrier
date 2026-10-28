@@ -8,27 +8,13 @@ namespace PetCarrier.Patches
     [HarmonyPatch(typeof(ZNet), "Start")]
     internal static class ZNet_Start_Patch
     {
-
+        /*
         [HarmonyPostfix]
         [HarmonyPriority(Priority.Last)]
         private static void Postfix()
         {
-
-
-
-
-
-
-
-
-
-
+            // for debug logs
         }
-
-
-
-
-
 
         private static void DumpCreaturesMass()
         {
@@ -57,10 +43,9 @@ namespace PetCarrier.Patches
             }
             Plugin.Log.LogInfo("=== End Creature Mass & Volume ===");
         }
+        */
 
     }
-
-
 
     /*
 

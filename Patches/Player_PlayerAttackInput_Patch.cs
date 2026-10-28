@@ -11,11 +11,7 @@ namespace PetCarrier.Patches
         private static bool suppressAttackUntilRelease;
 
         [HarmonyPrefix]
-        private static bool Prefix(
-            Player __instance,
-            ref bool ___m_attack,
-            ref bool ___m_attackHold,
-            ref float ___m_queuedAttackTimer)
+        private static bool Prefix(Player __instance, ref bool ___m_attack, ref bool ___m_attackHold, ref float ___m_queuedAttackTimer)
         {
             if (__instance != Player.m_localPlayer)
             {

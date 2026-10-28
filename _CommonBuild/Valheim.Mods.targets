@@ -90,10 +90,15 @@ namespace $(RootNamespace)
 	</Target>
 
   <ItemGroup Condition="'$(IsValheimMod)' == 'true'">
+    <!-- Exclude generated files from automatic compilation -->
     <Compile Remove="$(ProjectDir)$(PluginFile).cs" />
     <Compile Remove="$(ProjectDir)$(PluginFile).Info.cs" />
-  </ItemGroup>
 
+    <!-- Keep generated files visible in Solution Explorer -->
+    <None Include="$(ProjectDir)$(PluginFile).cs" />
+    <None Include="$(ProjectDir)$(PluginFile).Info.cs" />
+  </ItemGroup>
+  
   <!-- Copy to plugins folder -->
 	<Target Name="ValheimPostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>

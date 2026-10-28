@@ -11,7 +11,16 @@ namespace PetCarrier.Components
         private bool validPosition;
         private int startedFrame;
 
-        private static readonly int PlacementMask = LayerMask.GetMask("terrain", "piece", "static_solid", "Default");
+        private static readonly int PlacementMask = LayerMask.GetMask(
+            "Default",
+            "static_solid",
+            "Default_small",
+            "piece",
+            "piece_nonsolid",
+            "terrain",
+            "Water",
+            "vehicle"
+        );
 
         internal static void Begin(Player player, ItemDrop.ItemData item)
         {
@@ -74,24 +83,18 @@ namespace PetCarrier.Components
             if (GameCamera.instance)
             {
                 Transform cameraTransform = GameCamera.instance.transform;
-                Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+                Ray ray = new(cameraTransform.position, cameraTransform.forward);
                 const float maxDistance = 10f;
 
-                bool hasSolidHit = Physics.Raycast(ray, out RaycastHit hit, maxDistance, PlacementMask);
-                bool hasLiquidHit = TryGetLiquidPoint(ray, maxDistance, out Vector3 liquidPoint);
-                float solidDistance = hasSolidHit ? hit.distance : float.PositiveInfinity;
-                float liquidDistance = hasLiquidHit ? Vector3.Distance(ray.origin, liquidPoint) : float.PositiveInfinity;
-
-                if (hasSolidHit || hasLiquidHit)
+                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, PlacementMask))
                 {
-                    bool useLiquid = liquidDistance < solidDistance;
-                    position = useLiquid ? liquidPoint : hit.point;
+                    position = hit.point;
                     validPosition = true;
+
                     marker.transform.position = position;
 
-                    Vector3 normal = useLiquid ? Vector3.up : hit.normal;
                     Vector3 forward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
-                    marker.transform.rotation = Quaternion.LookRotation(normal, forward);
+                    marker.transform.rotation = Quaternion.LookRotation(hit.normal, forward);
                 }
             }
 
@@ -163,12 +166,13 @@ namespace PetCarrier.Components
             }
         }
 
+        /*
+        // deprecated
         private static bool TryGetLiquidPoint(Ray ray, float maxDistance, out Vector3 point)
         {
             point = default;
 
             const float step = 0.25f;
-            float previousDistance = 0f;
             Vector3 previousPoint = ray.origin;
 
             for (float distance = step; distance <= maxDistance; distance += step)
@@ -189,12 +193,12 @@ namespace PetCarrier.Components
                     return true;
                 }
 
-                previousDistance = distance;
                 previousPoint = currentPoint;
             }
 
             return false;
         }
+        */
 
     }
 }

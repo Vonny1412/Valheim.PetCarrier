@@ -64,9 +64,8 @@ namespace PetCarrier
                     continue;
                 }
 
-                string keyName = ZDOKeyNames.Names.TryGetValue(entry.Key, out string name) ? name : "Unknown";
+                //string keyName = ZDOKeyNames.Names.TryGetValue(entry.Key, out string name) ? name : "Unknown";
                 string value = ToDataString(entry.Value);
-
                 //Plugin.Log.LogMessage($"ZDO [{type}] {keyName} ({entry.Key}) = {value}");
 
                 data[$"{type}:{entry.Key}"] = value;
