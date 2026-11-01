@@ -1,0 +1,14 @@
+{
+  "petcarrier_crate_empty": "Tiertransportbox",
+  "petcarrier_crate_empty_description": "Eine robuste, verzauberte Kiste, in der deine gezähmten Tiere sicher aufgehoben sind. Keine Sorge, innen ist sie größer, als sie von außen aussieht!\n\n<color=yellow>Verwendung:</color>\nBenutze die Box über deine Schnellzugriffsleiste, während du ein gezähmtes Tier ansiehst, um es einzupacken.",
+  "petcarrier_crate_filled": "Tiertransportbox ( $1 )",
+  "petcarrier_crate_filled_description": "Das Tier im Inneren scheint es sich ganz gemütlich gemacht zu haben. Beim Freilassen des Tieres geht die Kiste kaputt.\n\n<color=yellow>Verwendung:</color>\nBenutze die Box über deine Schnellzugriffsleiste, um einen Platz auszuwählen, und lasse das Tier anschließend mit einem Linksklick wieder heraus.",
+  "petcarrier_message_is_not_tamed": "Diese Kreatur ist nicht gezähmt.",
+  "petcarrier_message_is_alerted": "Dieses Tier ist alamiert.",
+  "petcarrier_message_is_aggravated": "Dieses Tier ist wütend.",
+  "petcarrier_message_is_pregnant": "Dieses Tier ist trächtig.",
+  "petcarrier_message_is_locked": "Diese Kreatur kann in dieser Welt nicht freigelassen werden.",
+  "petcarrier_message_cannot_pack": "Diese Kreatur kann nicht eingepackt werden.",
+  "petcarrier_trader_tooltip": "Große Tiere, kleine Boxen. Das ist Magie!",
+  "petcarrier_locked_to_world": "Gebunden an: $1 "
+}

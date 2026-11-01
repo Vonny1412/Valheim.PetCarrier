@@ -11,12 +11,9 @@ Filled crates preserve creature data and display an image of their occupant, so 
 ## Features
 
 * Pack tamed creatures into portable crates
-* Preserve creature data, including level, stars, and taming status
-* Carry a filled crate in both hands and choose where to release its occupant
+* Preserve creature data
 * Creature sprites on inventory icons, dropped crates, and equipped crates
-* Purchase empty crates from Haldor
-* Configurable weight, empty-crate stacking, price, portal access, and cross-world restrictions
-* English and German localization
+* Configurable weight, price, portal access, and cross-world restrictions
 
 ---
 
@@ -33,16 +30,11 @@ Purchase empty pet crates from **Haldor**.
 3. Use the crate from your hotbar.
 
 The empty crate is consumed and a filled crate containing the creature is created.
-
 Creatures cannot be packed while alerted, aggravated, or pregnant.
 
 ### Carrying and Releasing a Creature
 
-A filled crate can be carried in your inventory or equipped in both hands.
-
 Equip the crate to activate its placement marker. Aim at a suitable location and **left-click** to release the creature. The filled crate is consumed when the creature is released.
-
-Unequipping or sheathing a filled crate puts it away completely instead of displaying it on your back or waist.
 
 ### Creature Sprites
 

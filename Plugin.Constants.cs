@@ -25,11 +25,14 @@ namespace PetCarrier
             internal const string TranslationKey_CrateEmptyDescription = "$petcarrier_crate_empty_description";
             internal const string TranslationKey_CrateFilled = "$petcarrier_crate_filled";
             internal const string TranslationKey_CrateFilledDescription = "$petcarrier_crate_filled_description";
+
             internal const string TranslationKey_MessageNotTamed = "$petcarrier_message_is_not_tamed";
             internal const string TranslationKey_MessageIsAlerted = "$petcarrier_message_is_alerted";
             internal const string TranslationKey_MessageIsAggravated = "$petcarrier_message_is_aggravated";
             internal const string TranslationKey_MessageIsPregnant = "$petcarrier_message_is_pregnant";
             internal const string TranslationKey_MessageIsLocked = "$petcarrier_message_is_locked";
+            internal const string TranslationKey_MessageCannotPack = "$petcarrier_message_cannot_pack";
+            
             internal const string TranslationKey_TraderTooltip = "$petcarrier_trader_tooltip";
             internal const string TranslationKey_LockedToWorld = "$petcarrier_locked_to_world";
             

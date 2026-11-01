@@ -233,10 +233,17 @@ namespace PetCarrier
                 var creatureData = CrateZDO.GetData(creatureZDO);
                 string serializedData = CrateZDO.Stringify(creatureData);
                 string creatureName = creatureZDO.GetString(ZDOVars.s_tamedName, creature.m_name);
-                var creatureLevel = creature.GetLevel();
-                if (creatureLevel > 0)
+                var creatureStars = creature.GetLevel() - 1;
+                if (creatureStars > 0)
                 {
-                    creatureName += $" {creatureLevel-1}★";
+                    if (creatureStars < 4)
+                    {
+                        creatureName += " " + new string('★', creatureStars);
+                    }
+                    else
+                    {
+                        creatureName += $" ★{creatureStars}";
+                    }
                 }
 
                 Vector3 spawnPosition = creature.transform.position + Vector3.up * 0.25f;
@@ -371,6 +378,14 @@ namespace PetCarrier
                 player?.Message(MessageHud.MessageType.Center, Plugin.Constants.TranslationKey_MessageIsPregnant);
                 return false;
             }
+
+            if (CrateZDO.HasForbiddenData(nview.GetZDO()))
+            {
+                player?.Message(MessageHud.MessageType.Center, Plugin.Constants.TranslationKey_MessageCannotPack);
+                return false;
+            }
+
+            return true;
 
             return true;
         }

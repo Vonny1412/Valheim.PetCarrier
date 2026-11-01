@@ -22,8 +22,54 @@ namespace PetCarrier
             ZDOVars.s_velHash,
             ZDOVars.s_lookTarget,
             ZDOVars.s_tiltrot,
-            ZDOVars.s_noise
+            ZDOVars.s_noise,
+
+            // LeashMe mod
+            ZDO.GetHashZDOID("LeashMe_holder").Key,
+            "LeashMe_post".GetStableHashCode(),
+            "LeashMe_postPos".GetStableHashCode()
         };
+
+        private static readonly Dictionary<int, object> ForbiddenHashes = new()
+        {
+            { "LeashMe_packOwner".GetStableHashCode(), 0L }
+        };
+
+        private static bool HasForbiddenData<T>(List<KeyValuePair<int, T>> entries)
+        {
+            foreach (var entry in entries)
+            {
+                if (ForbiddenHashes.TryGetValue(entry.Key, out object emptyValue) && emptyValue is T expected && !EqualityComparer<T>.Default.Equals(entry.Value, expected))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        internal static bool HasForbiddenData(ZDO zdo)
+        {
+            ZDOExtraData.GetData(
+                zdo.m_uid,
+                out var floats,
+                out var vec3s,
+                out var quats,
+                out var ints,
+                out var longs,
+                out var strings,
+                out var byteArrays,
+                out var connectionData
+            );
+
+            return HasForbiddenData(floats)
+                || HasForbiddenData(vec3s)
+                || HasForbiddenData(quats)
+                || HasForbiddenData(ints)
+                || HasForbiddenData(longs)
+                || HasForbiddenData(strings)
+                || HasForbiddenData(byteArrays);
+        }
 
         private static string ToDataString<T>(T value)
         {

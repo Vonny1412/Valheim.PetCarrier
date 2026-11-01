@@ -1,0 +1,14 @@
+{
+  "petcarrier_crate_empty": "Pet Carrier",
+  "petcarrier_crate_empty_description": "A sturdy, enchanted crate for keeping your tamed creatures safe. Don't worry, it's bigger on the inside than it looks!\n\n<color=yellow>How to use:</color>\nUse the crate from your hotbar while looking at a tamed creature to pack it up.",
+  "petcarrier_crate_filled": "Pet Carrier ( $1 )",
+  "petcarrier_crate_filled_description": "The creature inside seems to have made itself quite comfortable. The crate breaks when the creature is released.\n\n<color=yellow>How to use:</color>\nUse the crate from your hotbar to choose a spot, then left-click to let the creature out.",
+  "petcarrier_message_is_not_tamed": "This creature is not tamed.",
+  "petcarrier_message_is_alerted": "This creature is on alert.",
+  "petcarrier_message_is_aggravated": "This creature is angry.",
+  "petcarrier_message_is_pregnant": "This creature is pregnant.",
+  "petcarrier_message_is_locked": "This creature cannot be released in this world.",
+  "petcarrier_message_cannot_pack": "This creature cannot be packed.",
+  "petcarrier_trader_tooltip": "Big creatures, small packages. It's magic!",
+  "petcarrier_locked_to_world": "Locked to: $1 "
+}
